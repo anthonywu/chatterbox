@@ -26,6 +26,11 @@ dependencies = [
     "gradio>=5.44.1,<6.0.0",
 ]
 
+[project.optional-dependencies]
+ru = [
+    "russian-text-stresser @ git+https://github.com/Vuizur/add-stress-to-epub",
+]
+
 [project.urls]
 Homepage = "https://github.com/resemble-ai/chatterbox"
 Repository = "https://github.com/resemble-ai/chatterbox"

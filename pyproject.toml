@@ -9,24 +9,28 @@ authors = [
     {name = "resemble-ai", email = "engineering@resemble.ai"}
 ]
 dependencies = [
-    "numpy>=1.24.0,<3.0",
-    "librosa>=0.11.0,<1.0.0",
-    "s3tokenizer",
-    "torch>=2.6.0,<3.0.0",
-    "torchaudio>=2.6.0,<3.0.0",
-    "transformers>=4.46.3,<5.0.0",
-    "diffusers>=0.29.0,<1.0.0",
-    "resemble-perth>=1.0.1,<2.0.0",
     "conformer>=0.3.2,<1.0.0",
+    "diffusers>=0.29.0,<1.0.0",
+    "librosa>=0.11.0,<1.0.0",
+    "numpy>=1.24.0,<3.0",
+    "omegaconf>=2.3.0,<3.0",
+    "peft>=0.18.0",
+    "pykakasi>=2.3.0,<3.0.0",
+    "pyloudnorm>=0.1.1,<1.0",
+    "resemble-perth>=1.0.1,<2.0.0",
+    "s3tokenizer",
     "safetensors>=0.5.3,<1.0.0",
     "spacy-pkuseg>=0.0.25,<1.0",
-    "pyloudnorm>=0.1.1,<1.0",
-    "omegaconf>=2.3.0,<3.0",
-    "pykakasi>=2.3.0,<3.0.0",
-    "gradio>=5.44.1,<6.0.0",
+    "torch>=2.6.0,<3.0.0",
+    "torchaudio>=2.6.0,<3.0.0",
+    "torchcodec>=0.9.1",
+    "transformers>=4.46.3,<5.0.0",
 ]
 
 [project.optional-dependencies]
+demo = [
+    "gradio>=5.44.1,<6.0.0",
+]
 ru = [
     "russian-text-stresser @ git+https://github.com/Vuizur/add-stress-to-epub",
 ]
@@ -41,3 +45,11 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.uv]
+conflicts = [
+    [
+        { extra = "demo" },
+        { extra = "ru" },
+    ],
+]

@@ -142,6 +142,27 @@ print(f"Extracted watermark: {watermark}")
 ```
 
 
+## Troubleshooting
+
+### FFmpeg not found (libtorchcodec error)
+
+If you see `RuntimeError: Could not load libtorchcodec`, torchaudio/torchcodec can't find FFmpeg libraries.
+
+**macOS with Nix:**
+```bash
+export DYLD_LIBRARY_PATH="$(nix-build '<nixpkgs>' -A ffmpeg.lib --no-out-link 2>/dev/null)/lib:$DYLD_LIBRARY_PATH"
+```
+
+**macOS with Homebrew:**
+```bash
+export DYLD_LIBRARY_PATH="$(brew --prefix ffmpeg)/lib:$DYLD_LIBRARY_PATH"
+```
+
+**Linux:**
+```bash
+export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"  # or wherever libavcodec.so is located
+```
+
 ## Official Discord
 
 👋 Join us on [Discord](https://discord.gg/rJq9cRJBJ6) and let's build something awesome together!
